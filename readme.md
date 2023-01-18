@@ -1,3 +1,5 @@
+## setup database
+<p>import file 41119204_distributor.sql di 411192094_distributor/database/ ke database</p>
 ## login
 <p>email : aditya@gmail.com</p>
 <p>password : hebat123<p>
