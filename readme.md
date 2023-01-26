@@ -1,5 +1,5 @@
 ## setup database
-<p>UPDATE FILE DATABASE MENGGUNAKAN file 411192094_distributor_remidi.sql</p>
+<p>UPDATE FILE DATABASE MENGGUNAKAN 411192094_distributor_remidi.sql</p>
 <p>import file 411192094_distributor_remidi.sql di 411192094_distributor/database/ ke database</p>
 ## login
 <p>email : aditya@gmail.com</p>
