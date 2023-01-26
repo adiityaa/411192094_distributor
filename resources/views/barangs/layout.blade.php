@@ -11,6 +11,7 @@
 
     <!-- page css -->
     <link href="{{ asset('/vendors/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/vendors/select2/select2.css') }}" rel="stylesheet">
 
     <!-- Core css -->
     <link href="{{ asset('/css/app.min.css')}}" rel="stylesheet">
@@ -165,7 +166,7 @@
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle" href="{{ route('pelanggans.index') }}">
                                 <span class="icon-holder">
-                                    <i class="anticon anticon-team"></i>
+                                    <i class="anticon anticon-user"></i>
                                 </span>
                                 <span class="title">Pelanggan</span>
                             </a>
@@ -181,9 +182,25 @@
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle" href="{{ route('suppliers.index') }}">
                                 <span class="icon-holder">
-                                    <i class="anticon anticon-shopping"></i>
+                                    <i class="anticon anticon-team"></i>
                                 </span>
                                 <span class="title">Supplier</span>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" href="{{ route('penjualans.index') }}">
+                                <span class="icon-holder">
+                                    <i class="anticon anticon-dollar"></i>
+                                </span>
+                                <span class="title">Penjualan</span>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" href="{{ route('pembelians.index') }}">
+                                <span class="icon-holder">
+                                    <i class="anticon anticon-shopping-cart"></i>
+                                </span>
+                                <span class="title">Pembelian</span>
                             </a>
                         </li>
                     </ul>
@@ -382,9 +399,22 @@
     <script src="{{ asset('/vendors/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('/vendors/datatables/dataTables.bootstrap.min.js') }}"></script>
     <script src="{{ asset('/js/pages/datatables.js') }}"></script>
+    <script src="{{ asset('/vendors/select2/select2.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 
     <!-- Core JS -->
     <script src="{{ asset('/js/app.min.js') }}"></script>
+    <!-- <script>
+        $('.select2').select2();
+
+        $(document).ready(function){
+            $("#nama_barang").autocomplete({
+                source: [
+                    
+                ]
+            })
+        } -->
+    </script>
 
 </body>
 

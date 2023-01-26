@@ -12,4 +12,6 @@ class Pembelian extends Model
     protected $fillable = [
         'no_pembelian', 'tanggal', 'id_supplier', 'id_barang', 'jumlah_barang', 'harga_barang', 'created_at', 'created_by'
     ];
+
+    const CREATED_AT = 'created_at';
 }

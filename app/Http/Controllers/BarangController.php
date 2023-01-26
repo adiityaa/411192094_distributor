@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Barang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BarangController extends Controller
 {
@@ -14,7 +15,11 @@ class BarangController extends Controller
      */
     public function index()
     {
-        $barangs = Barang::paginate(10);
+        $barangs = Barang::select('barang.*', DB::raw('sum(penjualan.jumlah_barang) as penjualan_barang'), DB::raw('sum(pembelian.jumlah_barang) as pembelian_barang'))
+            ->leftJoin('pembelian', 'pembelian.id_barang', '=', 'barang.id')
+            ->leftJoin('penjualan', 'penjualan.id_barang', '=', 'barang.id')
+            ->groupBy('barang.id')
+            ->get();
 
         return view('barangs.index', compact('barangs'))
             ->with('i', (request()->input('page', 1) - 1) * 10);

@@ -4,13 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>411192094 STORE</title>
+    <title>411192094 DISTRIBUTOR</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('/images/logo/logoUndira_Favicon.png') }}">
 
     <!-- page css -->
     <link href="{{ asset('/vendors/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/vendors/select2/select2.css') }}" rel="stylesheet">
 
     <!-- Core css -->
     <link href="{{ asset('/css/app.min.css')}}" rel="stylesheet">
@@ -130,39 +131,14 @@
                                             <img src="{{ asset('/images/avatars/thumb-3.jpg') }}" alt="">
                                         </div>
                                         <div class="m-l-10">
-                                            <p class="m-b-0 text-dark font-weight-semibold">Marshall Nichols</p>
-                                            <p class="m-b-0 opacity-07">UI/UX Desinger</p>
+                                            @auth
+                                            <p class="m-b-0 text-dark font-weight-semibold">{{ auth()->user()->name }}</p>
+                                            <p class="m-b-0 opacity-07">{{ auth()->user()->email }}</p>
+                                            @endauth
                                         </div>
                                     </div>
                                 </div>
-                                <a href="javascript:void(0);" class="dropdown-item d-block p-h-15 p-v-10">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <i class="anticon opacity-04 font-size-16 anticon-user"></i>
-                                            <span class="m-l-10">Edit Profile</span>
-                                        </div>
-                                        <i class="anticon font-size-10 anticon-right"></i>
-                                    </div>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item d-block p-h-15 p-v-10">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <i class="anticon opacity-04 font-size-16 anticon-lock"></i>
-                                            <span class="m-l-10">Account Setting</span>
-                                        </div>
-                                        <i class="anticon font-size-10 anticon-right"></i>
-                                    </div>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item d-block p-h-15 p-v-10">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <i class="anticon opacity-04 font-size-16 anticon-project"></i>
-                                            <span class="m-l-10">Projects</span>
-                                        </div>
-                                        <i class="anticon font-size-10 anticon-right"></i>
-                                    </div>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item d-block p-h-15 p-v-10">
+                                <a href="/logout" class="dropdown-item d-block p-h-15 p-v-10">
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <i class="anticon opacity-04 font-size-16 anticon-logout"></i>
@@ -190,9 +166,9 @@
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle" href="{{ route('pelanggans.index') }}">
                                 <span class="icon-holder">
-                                    <i class="anticon anticon-home"></i>
+                                    <i class="anticon anticon-user"></i>
                                 </span>
-                                <span class="title">Dashboard</span>
+                                <span class="title">Pelanggan</span>
                             </a>
                         </li>
                         <li class="nav-item dropdown">
@@ -204,11 +180,27 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" href="{{ route('suppliers.index') }}">
+                                <span class="icon-holder">
+                                    <i class="anticon anticon-team"></i>
+                                </span>
+                                <span class="title">Supplier</span>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
                             <a class="dropdown-toggle" href="{{ route('penjualans.index') }}">
                                 <span class="icon-holder">
                                     <i class="anticon anticon-dollar"></i>
                                 </span>
-                                <span class="title">Transaksi</span>
+                                <span class="title">Penjualan</span>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" href="{{ route('pembelians.index') }}">
+                                <span class="icon-holder">
+                                    <i class="anticon anticon-shopping-cart"></i>
+                                </span>
+                                <span class="title">Pembelian</span>
                             </a>
                         </li>
                     </ul>
@@ -407,9 +399,13 @@
     <script src="{{ asset('/vendors/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('/vendors/datatables/dataTables.bootstrap.min.js') }}"></script>
     <script src="{{ asset('/js/pages/datatables.js') }}"></script>
+    <script src="{{ asset('/vendors/select2/select2.min.js') }}"></script>
 
     <!-- Core JS -->
     <script src="{{ asset('/js/app.min.js') }}"></script>
+    <script>
+        $('.select2').select2();
+    </script>
 
 </body>
 

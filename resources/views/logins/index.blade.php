@@ -24,15 +24,15 @@
                 <div class="container d-flex h-100">
                     <div class="row align-items-center w-100">
                         <div class="col-md-7 col-lg-5 m-h-auto">
-                            @if (session()->has('success'))
-                            <div class="alert alert-success">
+                            @if (session()->has('loginError'))
+                            <div class="alert alert-danger">
                                 <div class="d-flex justify-content-start">
                                     <span class="alert-icon m-r-20 font-size-30">
-                                        <i class="anticon anticon-check-circle"></i>
+                                        <i class="anticon anticon-close-circle"></i>
                                     </span>
                                     <div>
-                                        <h5 class="alert-heading">Login Success</h5>
-                                        <p>{{ session('success') }}</p>
+                                        <h5 class="alert-heading">Login Error</h5>
+                                        <p>{{ session('loginError') }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -49,16 +49,26 @@
                                             <label class="font-weight-semibold" for="userName">Email:</label>
                                             <div class="input-affix">
                                                 <i class="prefix-icon anticon anticon-user"></i>
-                                                <input type="email" class="form-control" id="email" name="email" placeholder="Email" autofocus>
+                                                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Email" autofocus>
                                             </div>
+                                            @error('email')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label class="font-weight-semibold" for="password">Password:</label>
                                             <a class="float-right font-size-13 text-muted" href="">Forget Password?</a>
                                             <div class="input-affix m-b-10">
                                                 <i class="prefix-icon anticon anticon-lock"></i>
-                                                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                                                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password">
                                             </div>
+                                            @error('password')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <div class="d-flex align-items-center justify-content-between">

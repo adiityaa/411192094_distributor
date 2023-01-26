@@ -22,7 +22,7 @@
             <div class="text-right">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addbarang">
-                    Add Data barang
+                    Add Data Barang
                 </button>
             </div>
             <div class="m-t-25 table-responsive">
@@ -74,10 +74,27 @@
                             <td>{{ ++$i }}</td>
                             <td>{{ $barang->kode_barang }}</td>
                             <td>{{ $barang->nama_barang }}</td>
-                            <td>{{ $barang->stok_barang }} pcs</td>
-                            <td>Rp. {{ $barang->harga_barang }}</td>
-                            <td>{{ $barang->stok_barang }}</td>
-                            <td>{{ $barang->stok_barang }}</td>
+                            <td>
+                                @if ($barang->stok_barang == null)
+                                {{0}} pcs
+                                @else
+                                {{ $barang->stok_barang }} pcs
+                                @endif
+                            </td>
+                            <td>@currency($barang->harga_barang)</td>
+                            <td>
+                                @if ($barang->penjualan_barang == null)
+                                {{0}} pcs
+                                @else
+                                {{ $barang->penjualan_barang }} pcs
+                                @endif
+                            </td>
+                            <td> @if ($barang->pembelian_barang == null)
+                                {{0}} pcs
+                                @else
+                                {{ $barang->pembelian_barang }} pcs
+                                @endif
+                            </td>
                             <td>
                                 <div class="d-flex align-items-center justify-content-between">
                                     <button class="btn btn-success btn-tone m-r-5 btn-xs" data-toggle="modal" data-target="#detailbarang{{ $barang->kode_barang }}"><i class="anticon anticon-eye"></i></button>
@@ -248,7 +265,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Nama Barang :</strong>
-                                <input type="text" name="nama_barang" class="form-control @error('nama_barang') is-invalid @enderror" placeholder="Nama Barang">
+                                <input type="text" name="nama_barang" id="nama_barang" class="form-control @error('nama_barang') is-invalid @enderror" placeholder="Nama Barang">
                                 @error('nama_barang')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -289,6 +306,5 @@
     </div>
 </div>
 
-{!! $barangs->render() !!}
 
 @endsection

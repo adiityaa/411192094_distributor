@@ -25,6 +25,8 @@ Route::get('/', [LoginController::class, 'index'])->middleware('guest');
 Route::resource('barangs', 'BarangController')->middleware('auth');
 Route::resource('pelanggans', 'PelangganController')->middleware('auth');
 Route::resource('suppliers', 'SupplierController')->middleware('auth');
+Route::resource('penjualans', 'PenjualanController')->middleware('auth');
+Route::resource('pembelians', 'PembelianController')->middleware('auth');
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/logout', [LoginController::class, 'logout']);
